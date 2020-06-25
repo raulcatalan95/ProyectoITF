@@ -1,61 +1,10 @@
 <template>
-  <div class="container home">
-    <div class="navbar-style">
-      <nav class="navbar navbar-expand-lg navbar-dark navbar_home">
-        <a class="navbar-brand" href="#">Navbar</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="#">
-                Home
-                <span class="sr-only">(current)</span>
-              </a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Link</a>
-            </li>
-            <li class="nav-item dropdown">
-              <a
-                class="nav-link dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >Dropdown</a>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
-            </li>
-          </ul>
-          <form class="form-inline my-2 my-lg-0">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </div>
-      </nav>
-    </div>
-    <div class="header_home">
-      <h1>Imagen de fondo</h1>
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+  <div class="Logged">
+    <div class="container header_logged">
+      <form class="form-inline my-2 my-lg-0">
+        <input class="form-control mr-sm-1 col-9" type="search" placeholder="Search" aria-label="Search" />
+        <el-button class="btn_login col-3">Buscar</el-button>
+      </form>
     </div>
     <div class="carousel_home">
       <el-carousel height="200px" direction="vertical" :autoplay="false">
@@ -70,9 +19,10 @@
 
 <script>
 export default {
-  name: "Home"
+  name: "Logged",
 };
 </script>
+
 <style>
 footer {
   background-color: #081b26;
@@ -86,8 +36,16 @@ footer {
   width: 100%;
   height: 250px;
 }
-/* .carousel_home {
-  height: 200px; */
+.header_logged {
+  background-color: #024873;
+  padding: 1%;
+}
+.btn_login {
+  background: #bf045b !important;
+  border: 1px solid #fff !important;
+  color: #fff !important;
+  margin: 5px !important;
+}
 
 .el-carousel__item h3 {
   color: #475669;
