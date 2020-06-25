@@ -17,6 +17,26 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 Vue.use(ElementUI);
 
+//Firebase
+
+import Firebase from 'firebase'
+
+
+ const FirebaseConfig = {
+  apiKey: "AIzaSyBuNM9UgPbgvs7bC0PsNJO48ZfbRSvY11c",
+  authDomain: "vue-crud-rest01.firebaseapp.com",
+  databaseURL: "https://vue-crud-rest01.firebaseio.com",
+  projectId: "vue-crud-rest01",
+  storageBucket: "vue-crud-rest01.appspot.com",
+  messagingSenderId: "98556152904",
+  appId: "1:98556152904:web:c04a2858e8a6c266f21c7d"
+};
+
+
+ // Agregar su objeto de configuración según su proyecto
+
+Firebase.initializeApp(FirebaseConfig)
+
 Vue.config.productionTip = false;
 
 new Vue({

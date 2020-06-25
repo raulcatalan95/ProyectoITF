@@ -1,24 +1,7 @@
 <template>
   <div class="home">
     <!--    -->
-    <div class="header_home">
-      <b-card overlay img-src="./img/Fondoheader2.png" img-alt="Card Image" text-variant="black" title="Idols Team Futbol">
-        <b-card-text>Some quick example text to build on the card and make up the bulk of the card's content.</b-card-text>
-      </b-card>
-    </div>
-    <div>
-      <section>
-        <el-button class="btn_login">Log In</el-button>
-      </section>
-    </div>
-    <div class="carousel_home">
-      <el-carousel height="200px" direction="vertical" :autoplay="false">
-        <el-carousel-item v-for="item in 4" :key="item">
-          <h3 class="medium">{{ "Carousel " + item }}</h3>
-        </el-carousel-item>
-      </el-carousel>
-    </div>
-    <footer>ITF. Copyrigth 2020.</footer>
+   
   </div>
 </template>
 
@@ -65,5 +48,13 @@ section {
 
 .el-carousel__item:nth-child(2n + 1) {
   background-color: #d3dce6;
+}
+
+
+.card-title{
+  font-family: 'Noto Sans', sans-serif;
+ font-weight: 700;
+ font-size: 3rem;
+margin-top: 23%;
 }
 </style>

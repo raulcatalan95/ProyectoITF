@@ -8,23 +8,43 @@
         <el-input v-model="form.password" placeholder="please enter your password"></el-input>
       </el-form-item>
       <el-form-item>
-        <el-button class="btn_login">Log In</el-button>
-        <el-button class="btn_login_2">Cancel</el-button>
+        <el-button class="btn_login" @click="login">Log In</el-button>
+        
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+import Firebase from 'firebase'
+
 export default {
-  name: "FormLogin",
+  name: "formlogin",
   data() {
     return {
       form: {
-        email: "",
-        password: ""
+        email: "correo@correo",
+        password: "123456"
       }
     };
-  }
+  },
+  methods: {
+     login() {
+ Firebase.auth().signInWithEmailAndPassword(this.correo,this.contraseña).then(
+ accept => {
+   alert('fuiste logeado correctamente')
+ this.$router.push('/');
+ console.log(accept.email)
+ },
+ reject => {
+ alert('usuario no existente')
+console.log(reject.message)
+ 
+ 
+ });
+ },
+
+  },
+ 
 };
 </script>
