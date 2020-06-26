@@ -1,0 +1,154 @@
+<template>
+    <div class="inicio">
+
+ <header>
+   
+   <h2>Idols Team Futbol</h2>
+   <h5 class="mb-5">La App que te informa sobre tus jugadores Favoritos</h5>
+   
+   </header> 
+   <section>
+     <h5>Sigue a tus Jugadores Favoritos</h5>
+     </section> 
+     <el-carousel :interval="3000" type="card" class="carrusel">
+    <el-carousel-item  v-for="(jugador, index) in datos" :key="index">
+      <el-col class="columna" :span="24">
+        <el-card  :body-style="{ padding: '0px' }">
+          <img :src="jugador.img" class="image" />
+          <div style="padding: 14px;">
+            <h5>{{ jugador.name }}</h5>
+            <div class="bottom clearfix">
+            
+            </div>
+          </div>
+        </el-card>
+      </el-col>
+    </el-carousel-item>
+  </el-carousel>
+
+    
+          
+    <footer>ITF. Copyrigth 2020.</footer>
+
+
+
+    </div>
+</template>
+
+<script>
+import axios from "axios";
+export default {
+    data() {
+        return {
+        datos:[],
+        listajugadores: [
+        "messi",
+        "neymar",
+        "mbappe",
+        "arturo vidal",
+        "alexis sanchez",
+        "cristiano ronaldo",
+       
+      ], 
+        }
+        },
+     
+    created(){
+    this.listajugadores.forEach((e) => {
+      axios
+        .get(
+          "https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?p=" + e
+        )
+        .then((data) => {
+          this.datos.push({
+            img: data.data.player[0].strCutout,
+            name: data.data.player[0].strPlayer,
+            idteam: data.data.player[0].idTeam,
+          });
+        });
+    });
+  },
+   methods: {
+      
+    }
+    
+}
+</script>
+
+<style lang="scss"  scoped>
+
+
+header h2{
+  font-family: 'Noto Sans', sans-serif;
+ font-weight: 700;
+ font-size: 3rem;
+ color: white;
+ 
+
+}
+header h5{
+  color: white;
+}
+footer {
+  background-color: #081b26;
+  height: 50px;
+}
+section {
+  background-color: #024873;
+  width: 100%;
+  height: 70px;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image {
+  width: 100%;
+  display: block;
+  background-image: url("./pngocean.png");
+ background-size: cover;
+ background-repeat: no-repeat;
+ background-position-x: center;
+ background-position-y:inherit
+}
+.el-card {
+  background-color: #ad8f3b;
+  margin: 2px;
+  
+}
+header{
+  background-image: url("./futbol01.jpg");
+  height: 360px;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-y:bottom;
+  display: flex;
+  flex-direction: column;
+justify-content: flex-end;
+
+}
+.el-carousel__item {
+  height: 500px;
+  h3 {
+      color: #475669;
+      font-size: 14px;
+      opacity: 0.75;
+      line-height: 200px;
+      margin: 0;
+    }
+}
+
+  .el-carousel__item:nth-child(2n) {
+    background-color: #fff;
+  }
+
+  .el-carousel__item:nth-child(2n+1) {
+    background-color: #fff;
+  }
+  .carrusel {
+    height: 500px;
+  }
+ 
+</style>

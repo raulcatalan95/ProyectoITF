@@ -3,7 +3,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Firebase from 'firebase'
-
+import Inicio from "../views/Home/Inicio.vue"
+import Buscador from "../views/Home/Buscador.vue"
+import Favoritos from "../views/Home/Favoritos.vue"
 
 Vue.use(VueRouter);
 
@@ -12,27 +14,35 @@ const routes = [
     path: "/",
     name: "Home",
     component: Home,
+    redirect:{name:"inicio"},
     meta:{
       login:true
-    }
+    },
+    children:[
+      {
+        path: "inicio",
+        name: "inicio",
+       component:Inicio
+      },
+      {
+        path: "buscador",
+        name: "buscador",
+       component:Buscador,
+      },
+      {
+        path: "favoritos",
+        name: "favoritos",
+       component:Favoritos,
+      },
+    ]
   },
   {
     path: "/login",
     name: "login",
     component:Login,
-   
-    
-   
-  },
+   },
  
-  {
-    path: "/logged",
-    name: "Logged",
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ "../views/Home/Logged.vue"),
-  },
+ 
 ];
 
 const router = new VueRouter({

@@ -1,92 +1,82 @@
 <template>
-  <div class="about">
-     <div class="navbar-style">
-      <nav class="navbar navbar-expand-lg navbar-dark navbar_home">
-        <a class="navbar-brand  ml-3" href="#"
-          >ITF</a
-        >
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-toggle="collapse"
-          data-target="#navbarSupportedContent"
-          aria-controls="navbarSupportedContent"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul class="navbar-nav mr-auto"></ul>
-
-          <div class="form-inline my-2 my-lg-0">
-            <el-button class="btn_login" type="text" >Inicia Sesion</el-button>
-             <b-nav-item class="ml-5" :to="{name:'formlogin'}"> Editar</b-nav-item>
-          </div>
-        </div>
-      </nav>
-    </div>
-
-       <div class="loginhome">
-         <div class="header_home">
-      <!--b-card overlay img-src="./img/Futbol01.jpg" img-alt="Card Image" text-variant="white" title="Idols Team Futbol">
-        <b-card-text>Some quick example text to build on the card and make up the bulk of the card's content.</b-card-text>
-
-
-
-      </b-card-->
-    </div>
-    <div>
-      <section>
-      
-      </section>
-    </div>
-    <div class="carousel_home">
-      <el-carousel height="200px" direction="vertical" :autoplay="false">
-        <el-carousel-item v-for="item in 4" :key="item">
-          <h3 class="medium">{{ "Carousel " + item }}</h3>
-        </el-carousel-item>
-      </el-carousel>
-    </div>
-    <footer>ITF. Copyrigth 2020.</footer>
-
-
-
-       </div>
-</div>
+  <div class="login">
   
+    <h2>Login</h2>
+   <div class="formulario p-5">
+     <h4>Correo Electronico</h4>
+      <b-input-group >
+      <b-input-group-prepend is-text>
+        <b-icon icon="envelope"></b-icon>
+      </b-input-group-prepend>
+      <b-form-input type="email" placeholder="correo@example.com"  v-model="correo"></b-form-input>
+    </b-input-group>
+   
+   
+    <h4>Contraseña</h4>
+     <b-input-group >
+      <b-input-group-prepend is-text>
+        <b-icon icon="lock-fill"></b-icon>
+      </b-input-group-prepend>
+      <b-form-input type="password" placeholder="contraseña"  v-model="contraseña"></b-form-input>
+    </b-input-group>
+    <button @click="login" class="btn btn-success m-3">Ingresar</button>
+</div>
+
+
+</div>
 </template>
 <script>
+import Firebase from 'firebase'
 export default {
-data() {
-  return {
-    
-  }
-},
-
-    methods: {
-      logueate(){
-       this.$router.push({name:'formlogin'})
-      
-        
-       
-      },
-      
+  name:'login',
+  
+  data() {
+    return {
+      correo:'correo@correo.com',
+      contraseña:'123456',
     }
-   
-  }
+  },
+methods: {
+  
+ login() {
+ Firebase.auth().signInWithEmailAndPassword(this.correo,this.contraseña).then(
+ accept => {
+   alert('fuiste logeado correctamente')
+ this.$router.push('/');
+ console.log(accept.email)
+ },
+ reject => {
+ alert('usuario no existente')
+console.log(reject.message)
+ 
+ 
+ });
+ },
 
+},
+}
 </script>
-
-<style>
-.login_home{
-  background-image: url("../../../public/img/Futbol01.jpg");
-
+</script>
+<style  scoped>
+.formulario{
+  width: 50%;
+  margin: auto;
+  background-image: url("./estadio.jpg");
+   background-position-y: center;
+  border-radius: 15px;
+  padding: 30px;
+  color: azure;
 }
-
-#Btnregistrate :hover {
-  background-color: #bf045b;
+.login{
+ 
+  height:600px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ 
+  color: azure;
 }
-
 </style>
+
+
 
