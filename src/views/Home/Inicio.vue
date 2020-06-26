@@ -8,8 +8,9 @@
    
    </header> 
    <section>
-     <h5>Sigue a tus Jugadores Favoritos</h5>
+     <h5>Encuentra a los jugadores mas populares del Mundo</h5>
      </section> 
+     
      <el-carousel :interval="3000" type="card" class="carrusel">
     <el-carousel-item  v-for="(jugador, index) in datos" :key="index">
       <el-col class="columna" :span="24">
@@ -82,12 +83,15 @@ header h2{
   font-family: 'Noto Sans', sans-serif;
  font-weight: 700;
  font-size: 3rem;
- color: white;
- 
+  color: #fff;
 
 }
+ 
+
+
 header h5{
-  color: white;
+ color: #fff;
+
 }
 footer {
   background-color: #081b26;
@@ -129,6 +133,7 @@ header{
 justify-content: flex-end;
 
 }
+
 .el-carousel__item {
   height: 500px;
   h3 {
