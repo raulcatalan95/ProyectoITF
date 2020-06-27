@@ -7,7 +7,7 @@
    <h5 class="mb-5">La App que te informa sobre tus jugadores Favoritos</h5>
    
    </header> 
-   <section>
+   <section class="subtitulo">
      <h5>Encuentra a los jugadores mas populares del Mundo</h5>
      </section> 
      
@@ -97,20 +97,18 @@ footer {
   background-color: #081b26;
   height: 50px;
 }
-section {
+.subtitulo {
   background-color: #024873;
   width: 100%;
   height: 70px;
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+ 
 }
 
 .image {
   width: 100%;
   display: block;
-  background-image: url("./pngocean.png");
+  background-image: url(../assets/pngocean.png);
  background-size: cover;
  background-repeat: no-repeat;
  background-position-x: center;
@@ -122,7 +120,7 @@ section {
   
 }
 header{
-  background-image: url("./futbol01.jpg");
+  background-image: url(../assets/futbol01.jpg);
   height: 360px;
   width: 100%;
   background-repeat: no-repeat;

@@ -30,13 +30,15 @@ import Firebase from 'firebase'
 
 
  const FirebaseConfig = {
-  apiKey: "AIzaSyBuNM9UgPbgvs7bC0PsNJO48ZfbRSvY11c",
-  authDomain: "vue-crud-rest01.firebaseapp.com",
-  databaseURL: "https://vue-crud-rest01.firebaseio.com",
-  projectId: "vue-crud-rest01",
-  storageBucket: "vue-crud-rest01.appspot.com",
-  messagingSenderId: "98556152904",
-  appId: "1:98556152904:web:c04a2858e8a6c266f21c7d"
+  apiKey: "AIzaSyA8uZ3csSEP2_fOxKs9SBLn0s-PKTbVL5A",
+  authDomain: "proyectoitf.firebaseapp.com",
+  databaseURL: "https://proyectoitf.firebaseio.com",
+  projectId: "proyectoitf",
+  storageBucket: "proyectoitf.appspot.com",
+  messagingSenderId: "873868213772",
+  appId: "1:873868213772:web:31d6264d64def032bf3829",
+  measurementId: "G-VR9BGWRTDD",
+
 };
 
 

@@ -7,24 +7,7 @@
 <script>
 export default {
     methods: {
-      open() {
-        this.$prompt('Please input your e-mail', 'Tip', {
-          confirmButtonText: 'OK',
-          cancelButtonText: 'Cancel',
-          inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
-          inputErrorMessage: 'Invalid Email'
-        }).then(({ value }) => {
-          this.$message({
-            type: 'success',
-            message: 'Your email is:' + value
-          });
-        }).catch(() => {
-          this.$message({
-            type: 'info',
-            message: 'Input canceled'
-          });       
-        });
-      }
+    
     }
   }
 
@@ -45,4 +28,9 @@ export default {
 .material-icons {
   font-size: 2rem;
 }
+#el-drawer__title{
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 </style>

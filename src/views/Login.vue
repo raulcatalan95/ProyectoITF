@@ -61,7 +61,7 @@ console.log(reject.message)
 .formulario{
   width: 50%;
   margin: auto;
-  background-image: url("./estadio.jpg");
+  background-image: url(../assets/estadio.jpg);
    background-position-y: center;
   border-radius: 15px;
   padding: 30px;

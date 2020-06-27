@@ -51,7 +51,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+
+
 footer {
   background-color: #081b26;
   height: 50px;
@@ -59,11 +61,7 @@ footer {
 #navar {
   background-color: #081b26 !important;
 }
-section {
-  background-color: #024873;
-  width: 100%;
-  height: 50px;
-}
+
 .btn_login {
   background: #bf045b !important;
   border: 1px solid #fff !important;
@@ -96,4 +94,5 @@ section {
   font-size: 3rem;
   margin-top: 23%;
 }
+
 </style>

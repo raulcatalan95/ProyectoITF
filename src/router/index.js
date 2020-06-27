@@ -3,9 +3,9 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Firebase from 'firebase'
-import Inicio from "../views/Home/Inicio.vue"
-import Buscador from "../views/Home/Buscador.vue"
-import Favoritos from "../views/Home/Favoritos.vue"
+import Inicio from "../views/Inicio.vue"
+import Buscador from "../views/Buscador.vue"
+import Favoritos from "../views/Favoritos.vue"
 
 Vue.use(VueRouter);
 
