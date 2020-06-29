@@ -1,8 +1,8 @@
 <template>
   <div class="buscador">
-    <h2 class="mt-3">Busca a tu jugador</h2>
+    <h2 class=" buscarPlayer mt-3">Busca a tu jugador</h2>
     <div class="buscando">
-      <span>ingrese nombre y apellido</span>
+      <span>Ingrese nombre y apellido (A exepcion de Neymar)</span>
       <el-input
         placeholder="Nombre y Apellido del jugador"
         v-model="nombre"
@@ -28,62 +28,65 @@
           <el-card :body-style="{ padding: '0px' }">
             <img :src="jugador.img" :alt="jugador.name" class="image" />
             <div style="padding: 14px;">
-              <h5>{{ jugador.name }}</h5>
+              <h5 class="nameplayer">{{ jugador.name }}</h5>
               <div class="bottom clearfix">
-                <el-button @click="drawer = true" type="warning" size="small"
+                <el-button
+                  @click="ModalJugador = true"
+                  type="warning"
+                  size="small"
                   >Ver mas</el-button
                 >
-                <el-drawer
+
+                <el-dialog id="modaljugador"
                   :title="jugador.name"
-                  :visible.sync="drawer"
-                  size="80%"
+                  :visible.sync="ModalJugador"
+                 
                 >
-                  <div>
+                  
+                    <h5>Club: {{ jugador.team }}</h5>
+                    <h5>Nacionalidad: {{ jugador.nation }}</h5>
+                    <h5>Posicion: {{ jugador.position }}</h5>
+                    <h5>N Camiseta: {{ jugador.number }}</h5>
+                    <h5>Altura: {{ jugador.height }}</h5>
+                    <h5>Peso: {{ jugador.weight }} Kg</h5>
+                    <h5>Origen: {{ jugador.location }}</h5>
+                    <h5>Fecha Nacimiento: {{ jugador.date }}</h5>
                     
-            <div class="infoPlayer">
-                     
-                      <h5>Club: {{ jugador.team }}</h5>
-                      <h5>Nacionalidad: {{ jugador.nation }}</h5>
-                      <h5>Posicion: {{ jugador.position }}</h5>
-                      <h5>N Camiseta: {{ jugador.number }}</h5>
-                      <h5>Altura: {{ jugador.height }}</h5>
-                      <h5>Peso: {{ jugador.weight }}</h5>
-                      <h5>Origen: {{ jugador.location }}</h5>
-                      <h5>Fecha Nacimiento: {{ jugador.date }}</h5>
-                      </div>
+                  <el-button
+                      class="m-2"
+                      type="primary"
+                      size="small"
+                      @click="TeamInfo(jugador.idteam)"
+                      >Informacion del Equipo</el-button
+                    >
+
+                  <el-dialog
+                    :title="jugador.team"
+                    :visible.sync="ModalTeam"
+                    append-to-body
                     
-                    <div>
-                      <el-button
-                        @click="TeamInfo(jugador.idteam)"
-                        type="warning"
-                        size="small"
-                        >iInformacion del Equipo</el-button
-                      >
-                      <el-drawer
-                        :title="jugador.team"
-                        :append-to-body="true"
-                        :visible.sync="innerDrawer"
-                         size="60%"
-                      >
-                        <div
-                          class="infoteam"
-                          v-for="equipo in dataTeam"
-                          :key="equipo"
-                        >
-                         
-                            
-                            <h5>Proximo partido: {{ equipo.nextmatch }}</h5>
-                            <h5>Equipo local: {{ equipo.hometeam }}</h5>
-                            <h5>Fecha : {{ equipo.datematch }}</h5>
-                            <h5>Horario: {{ equipo.timematch }}</h5>
-                            <h5>Temporada: {{ equipo.season }}</h5>
-                            <h5>Liga: {{ equipo.league }}</h5>
-                         
-                        </div>
-                      </el-drawer>
+                  >
+                    <div
+                      class="fondoEquipo"
+                      v-for="equipo in dataTeam"
+                      :key="equipo"
+                    >
+                      <h5>Proximo partido: {{ equipo.nextmatch }}</h5>
+                      <h5>Equipo local: {{ equipo.hometeam }}</h5>
+                      <h5>Fecha : {{ equipo.datematch }}</h5>
+                      <h5>Horario: {{ equipo.timematch }}</h5>
+                      <h5>Temporada: {{ equipo.season }}</h5>
+                      <h5>Liga: {{ equipo.league }}</h5>
                     </div>
-                  </div>
-                </el-drawer>
+                    <div class="footerEquipo">
+
+                    </div>
+                  </el-dialog>
+                   
+                   
+                    
+                 
+                </el-dialog>
 
                 <el-button
                   class="m-2"
@@ -110,12 +113,11 @@ export default {
   name: "buscador",
   data() {
     return {
-      nombre: "lionel messi",
+      nombre: "sergio aguero",
       dataTeam: [],
       dataPlayer: [],
-      drawer: false,
-      innerDrawer: false,
-      imagenModal: "./fondo_modal.jpg",
+      ModalJugador: false,
+      ModalTeam: false,
     };
   },
 
@@ -145,7 +147,8 @@ export default {
 
     buscar() {
       this.dataPlayer = [];
-      if (this.nombre && this.nombre.includes(" ")) {
+      let validar = this.nombre.search(" ");
+      if (validar != 0 && validar != -1 && validar != this.nombre.length - 1 || this.nombre == "neymar") {
         axios
           .get(
             "https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?p=" +
@@ -165,21 +168,25 @@ export default {
               weight: data.data.player[0].strWeight,
               location: data.data.player[0].strBirthLocation,
               idteam: data.data.player[0].idTeam,
+              
             });
             //strCutout
             //strPlayer
           })
-          .catch(() => alert("jugador no existe"));
+          .catch(() =>
+            alert("El jugador que buscaste no existe en nuestros Registros")
+          );
       } else {
         alert(
-          "Ingrese Nombre y Apellido del Jugador para que la busqueda sea exitosa"
+          "Ingrese Nombre y Apellido del Jugador y verifique que no halla espacio en blanco antes del nombre y/o despues del apellido. Para que la busqueda sea exitosa"
         );
       }
     },
 
-     TeamInfo(idTeam) {
+    TeamInfo(idTeam) {
       this.dataTeam = [];
-      this.innerDrawer = true;
+      this.ModalTeam = true;
+
       axios
         .get(
           "https://www.thesportsdb.com/api/v1/json/1/eventsnext.php?id=" +
@@ -213,9 +220,8 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-start;
 }
-.buscador h2 {
+.buscador .buscarPlayer {
   font-family: "Noto Sans", sans-serif;
   font-weight: 700;
   color: white;
@@ -242,19 +248,23 @@ export default {
 .el-card {
   background-color: #ad8f3b !important;
   margin-top: 30px;
+ 
 }
 .el-row {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.el-row h5 {
+.el-row .nameplayer {
   font-weight: 700;
+  text-align: center;
 }
 .buscando span {
   color: #fff;
   margin-top: 30px;
 }
-
+.footerEquipo{
+  height: 120px;
+}
 
 </style>

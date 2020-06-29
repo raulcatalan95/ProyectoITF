@@ -96,6 +96,7 @@ header h5{
 footer {
   background-color: #081b26;
   height: 50px;
+  text-align: center;
 }
 .subtitulo {
   background-color: #024873;
@@ -129,8 +130,10 @@ header{
   display: flex;
   flex-direction: column;
 justify-content: flex-end;
+align-items: center;
 
 }
+
 
 .el-carousel__item {
   height: 500px;
@@ -153,5 +156,9 @@ justify-content: flex-end;
   .carrusel {
     height: 500px;
   }
- 
+ .subtitulo{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+ }
 </style>

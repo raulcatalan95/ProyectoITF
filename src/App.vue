@@ -14,23 +14,35 @@ export default {
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+
+.el-dialog__body{
+  height: 100%;
+  width: 100%;
+  background-image: url(assets/fondo_modal.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: bottom;
+  color: #fff !important;
+  padding: 10px;
+  font-family: 'Noto Sans', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-#Btnregistrate :hover {
-  background-color: #bf045b;
+
+.el-dialog__header{
+  background-color: #032d5f;
+  
 }
-.material-icons {
+
+.el-dialog__header .el-dialog__title{
+  color: #fff ; 
+  font-weight: 900;
   font-size: 2rem;
+   font-family: 'Noto Sans', sans-serif;
 }
-#el-drawer__title{
-  font-size: 2rem;
-  font-weight: 700;
-}
+
+
 
 </style>

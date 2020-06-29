@@ -1,6 +1,6 @@
 <template>
     <div class="favoritos">
-          <el-row>
+          <!--el-row>
       <el-col class="columna" :span="14" v-for="(jugador, index) in favoritos[0]" :key="index">
         <el-card :body-style="{ padding: '0px' }">
           <img :src="jugador.img" :alt="jugador.name" class="image" />
@@ -11,7 +11,13 @@
           </div>
         </el-card>
       </el-col>
-    </el-row>
+    </el-row-->
+
+  <el-button type="text" @click="dialogTableVisible = true">open a Table nested Dialog</el-button>
+
+<el-dialog title="Shipping address" :visible.sync="dialogTableVisible">
+ <div class="modalFut"><h1>hola</h1></div>
+</el-dialog>
         
     </div>
 </template>
@@ -24,7 +30,12 @@ export default {
         ...mapState(['favoritos'])
     },
     methods: {
-        
+       
+    },
+    data() {
+      return {
+         dialogTableVisible: false,
+      }
     },
     mounted() {
 console.log(this.favoritos)
@@ -62,7 +73,6 @@ console.log(this.favoritos)
 
   
 }
-.el-row h5{
-  font-weight: 700;
-}
+
+
 </style>

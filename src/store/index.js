@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import Axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -16,7 +17,9 @@ state.favoritos=jugadores
   actions: {
     setFavoritos({commit},jugadores){
     commit('setFavoritosState',jugadores)
-    }
+   
+
+}
   },
   modules: {
   }
