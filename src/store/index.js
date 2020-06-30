@@ -6,11 +6,11 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    favoritos:[]
+    favoritos:[],
   },
   mutations: {
 setFavoritosState(state,jugadores){
-state.favoritos=jugadores 
+state.favoritos.push(jugadores)
 }
 
   },

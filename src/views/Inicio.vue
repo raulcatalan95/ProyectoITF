@@ -97,6 +97,7 @@ footer {
   background-color: #081b26;
   height: 50px;
   text-align: center;
+  color:#ffffff80;
 }
 .subtitulo {
   background-color: #024873;

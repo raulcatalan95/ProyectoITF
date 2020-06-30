@@ -6,13 +6,14 @@
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav>
           <b-nav-item class="ml-3 mt-2" :to="{ name: 'inicio' }"
-            ><img src="./soccer.svg" alt=""
+            ><img src="../assets/soccer.svg" alt=""
           />ITF</b-nav-item>
           <b-nav-item class="ml-5 mt-2" :to="{ name: 'buscador' }">
             Encuentra tu jugador</b-nav-item
           >
+         
           <b-nav-item class="ml-5 mt-2" :to="{ name: 'favoritos' }">
-            Favoritos</b-nav-item
+            Favoritos<el-badge :value="favoritos.length" v-if="favoritos.length !=0" class="item"/></b-nav-item
           >
         </b-navbar-nav>
 
@@ -36,6 +37,7 @@
 
 <script>
 import Firebase from "firebase";
+import { mapState } from "vuex";
 export default {
   name: "Home",
   methods: {
@@ -47,6 +49,10 @@ export default {
           console.log(accept);
         });
     },
+  },
+  computed: {
+    ...mapState(["favoritos"]),
+    
   },
 };
 </script>

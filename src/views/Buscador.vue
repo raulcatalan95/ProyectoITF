@@ -31,6 +31,7 @@
               <h5 class="nameplayer">{{ jugador.name }}</h5>
               <div class="bottom clearfix">
                 <el-button
+                class="m-2"
                   @click="ModalJugador = true"
                   type="warning"
                   size="small"
@@ -127,22 +128,16 @@ export default {
 
   methods: {
     favorito() {
-      axios
-        .post(
-          "https://us-central1-proyectoitf.cloudfunctions.net/jugadores/jugador",
-          +this.dataPlayer
-        )
-        .then((result) => {
+
+       this.$store.dispatch("setFavoritos", this.dataPlayer[0]);
           this.$notify.success({
             title: "Favoritos",
             message: "Jugador añadido a Favoritos",
             offset: 100,
           });
-          console.log(result.message);
-        })
-        .catch((err) => {
-          console.log(err.message);
-        });
+         
+        
+     
     },
 
     buscar() {
@@ -220,6 +215,7 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
 }
 .buscador .buscarPlayer {
   font-family: "Noto Sans", sans-serif;
@@ -228,6 +224,8 @@ export default {
 }
 .buscando {
   width: 50%;
+  display: flex;
+  flex-direction: column;
 }
 .btnSearch {
   font-size: 1rem !important;
@@ -255,6 +253,9 @@ export default {
   align-items: center;
   justify-content: center;
 }
+.el-row button{
+  text-align: center;
+}
 .el-row .nameplayer {
   font-weight: 700;
   text-align: center;
@@ -262,6 +263,7 @@ export default {
 .buscando span {
   color: #fff;
   margin-top: 30px;
+  text-align: center;
 }
 .footerEquipo{
   height: 120px;

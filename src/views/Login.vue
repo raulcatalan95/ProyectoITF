@@ -63,17 +63,22 @@ console.log(reject.message)
   margin: auto;
   background-image: url(../assets/estadio.jpg);
    background-position-y: center;
-  border-radius: 15px;
+   border-radius: 15px;
   padding: 30px;
   color: azure;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
 .login{
  
   height:600px;
   display: flex;
   flex-direction: column;
   align-items: center;
- 
+
+background-position-y: center;
   color: azure;
 }
 </style>

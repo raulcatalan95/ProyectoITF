@@ -43,6 +43,4 @@ export default {
    font-family: 'Noto Sans', sans-serif;
 }
 
-
-
 </style>
