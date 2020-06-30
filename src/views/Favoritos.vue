@@ -1,6 +1,9 @@
 <template>
   <div class="favoritos">
-    <table class="table">
+    <h1 v-if="favoritos.length == 0" class="tituloFav">
+      La Lista de Favoritos Esta Vacia
+    </h1>
+    <table class="table" v-else>
       <thead class="thead-dark">
         <tr>
           <th scope="col">Jugadores Favoritos</th>
@@ -16,10 +19,19 @@
                   <h5>{{ jugador.name }}</h5>
                   <div class="bottom clearfix">
                     <el-button
+                      class="m-2"
+                      @click="ModalVerMas(i)"
+                      type="warning"
+                      size="small"
+                      >Ver mas</el-button
+                    >
+
+                 
+                    <el-button
                       type="warning"
                       icon="el-icon-delete"
                       size="small"
-                      @click="datosplayer(i)"
+                      @click="eliminar(i)"
                       >Eliminar de favoritos</el-button
                     >
                   </div>
@@ -28,8 +40,33 @@
             </el-col>
           </td>
         </tr>
+        
+                   
       </tbody>
+      <div v-for="jugador in ModalInfo" :key="jugador">
+       <el-dialog id="modaljugador"
+                  :title="jugador.name"
+                  :visible.sync="ModalJugador"
+                 
+                >
+                
+                    
+                    <h5>Club: {{ jugador.team }}</h5>
+                    <h5>Nacionalidad: {{ jugador.nation }}</h5>
+                    <h5>Posicion: {{ jugador.position }}</h5>
+                    <h5>N Camiseta: {{ jugador.number }}</h5>
+                    <h5>Altura: {{ jugador.height }}</h5>
+                    <h5>Peso: {{ jugador.weight }} Kg</h5>
+                    <h5>Origen: {{ jugador.location }}</h5>
+                    <h5>Fecha Nacimiento: {{ jugador.date }}</h5>
+                    
+                    </el-dialog>
+                   </div> 
+
     </table>
+
+    
+                    
   </div>
 </template>
 <script>
@@ -38,19 +75,24 @@ import { mapState } from "vuex";
 
 export default {
   computed: {
-    ...mapState(["favoritos"]),
+    ...mapState(["favoritos","ModalInfo"]),
   },
   methods: {
-    datosplayer(i) {
-      this.ModalJugador = true;
-
-      console.log(i);
+    eliminar(i) {
+      this.$store.dispatch("eliminarFav", i);
+      alert("eliminado");
+    },
+    ModalVerMas(i){
+   this.$store.dispatch("SetModalInfo", i);
+   this.ModalJugador = true
+ 
+   console.log(this.index);
     },
   },
   data() {
     return {
       ModalJugador: false,
-      index: "",
+      
     };
   },
   mounted() {
@@ -58,7 +100,7 @@ export default {
 
     /*axios.get("https://us-central1-proyectoitf.cloudfunctions.net/jugadores/jugadores")
         .then((data) => {
-            alert('llego desde la api')
+            alert('llego desde la info')
             console.log(data)
         }).catch((err) => {
             alert('no llego nada')
@@ -85,7 +127,7 @@ tbody tr {
   background-image: url(../assets/seccion_favoritos.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  background-position-y:center;
+  background-position-y: center;
 }
 
 .carta .el-card .el-card__body {
@@ -104,5 +146,9 @@ tbody tr {
   display: flex;
   flex-direction: row;
   justify-content: center;
+}
+.tituloFav {
+  text-align: center;
+  margin: auto;
 }
 </style>

@@ -56,7 +56,7 @@ console.log(reject.message)
 },
 }
 </script>
-</script>
+
 <style  scoped>
 .formulario{
   width: 50%;
@@ -81,6 +81,27 @@ console.log(reject.message)
 background-position-y: center;
   color: azure;
 }
+@media screen and (min-width:300px){
+  .formulario{
+      width: 100%;
+ padding: 2px;
+}
+  }
+  @media screen and (min-width:600px){
+  .formulario{
+      width: 70%;
+ 
+}
+  }
+    @media screen and (min-width:900px){
+  .formulario{
+      width: 50%;
+ 
+}
+  }
+
+ 
+
 </style>
 
 

@@ -58,12 +58,11 @@ export default {
 </script>
 
 <style scoped>
-
-
-footer {
-  background-color: #081b26;
-  height: 50px;
+.home{
+  text-align: center;
 }
+
+
 #navar {
   background-color: #081b26 !important;
 }

@@ -94,7 +94,7 @@
                   type="warning"
                   icon="el-icon-star-off"
                   size="small"
-                  @click="favorito"
+                  @click="favorito()"
                   >Añadir a Favoritos</el-button
                 >
               </div>
