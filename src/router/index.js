@@ -7,6 +7,7 @@ import Inicio from "../views/Inicio.vue"
 import Buscador from "../views/Buscador.vue"
 import Favoritos from "../views/Favoritos.vue"
 import Registro from "../views/Registro.vue"
+import Notfound from "../views/Notfound.vue"
 
 
 Vue.use(VueRouter);
@@ -51,6 +52,12 @@ const routes = [
         name: "registro",
         component:Registro,
        },
+       {
+        path: "/*",
+        name: "notfound",
+        component:Notfound,
+       },
+    
     
    
  
