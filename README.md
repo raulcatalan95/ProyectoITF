@@ -31,36 +31,22 @@
    - Vue Router.
    - Vuex.
    - Element UI.
+   - Bootstrap Vue.
    - Firebase.
+   - Axios.
+   
 
 EXPERIENCIA USUARIO
 
 4.  Pantalla de Login
 
-    La App Idols Team FUT tendrá como View de entrada, el login, en el cual el usuario, se registrará con correo y contraseña.
+    La App Idols Team FUT tendrá como View de entrada, el login, en el cual el usuario, se registrará con correo y contraseña. Contará con la opción de registro para nuevos usuarios.
 
 5.  Pantalla principal:
 
     El usuario deberá poder marcar datos como favoritos o guardar registro de sus acciones en esta pantalla.
-
-    En esta interfase el usuario verá un navbar con BurgerIcon en el cual se desplegarán opciones como:
-
-    - Buscar Jugadores.
-    - Equipos creados.
-    - Juegadores Favoritos.
-    - Log Out.
-
-    Además, se tendrá un header en la que contenga la plantilla de primer equipo creado y en ella se podrá selecionar los 11 jugadores que conformen el equipo.
-
-    <-- Footer -->
-
-1) Creación del archivo README.md
-2) Instalación de las dependencias necesarias. (0.5 puntos)
-3) Creación de las 3 vistas principales. (2 puntos)
-4) Creación y uso de un componente reutilizable para el menú. (0.5 puntos)
-5) Estructura de aplicación en base a SFC. (2 puntos)
-6) Utilización de renderizado de listas. (0.5 puntos)
-7) Diseño consistente entre cada vista, respetando guía de estilos. (0.5 puntos)
-8) Navegación basada en Vue router. (1 punto)
-9) Uso de librería de componentes para el desarrollo de la interfaz. (1.5 puntos)
-10) Interfaz responsiva. (1 punto
+    
+    En esta encontrará un buscador en el cual podrá encontrar los jugadores que desee por nombre y apellido.
+    
+    Al tener un jugador, se podrá ver diversas caracteristicas del jugador y en donde podrá seleccionarlo como favorito, así quedará guardado como tal en su perfil y podrá visualizar informacion de sus jugadores preferidos cada vez que entre a su sesion. 
+    
