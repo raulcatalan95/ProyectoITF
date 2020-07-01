@@ -31,41 +31,39 @@
               <h5 class="nameplayer">{{ jugador.name }}</h5>
               <div class="bottom clearfix">
                 <el-button
-                class="m-2"
+                  class="m-2"
                   @click="ModalJugador = true"
                   type="warning"
                   size="small"
                   >Ver mas</el-button
                 >
 
-                <el-dialog id="modaljugador"
+                <el-dialog
+                  id="modaljugador"
                   :title="jugador.name"
                   :visible.sync="ModalJugador"
-                 
                 >
-                  
-                    <h5>Club: {{ jugador.team }}</h5>
-                    <h5>Nacionalidad: {{ jugador.nation }}</h5>
-                    <h5>Posicion: {{ jugador.position }}</h5>
-                    <h5>N Camiseta: {{ jugador.number }}</h5>
-                    <h5>Altura: {{ jugador.height }}</h5>
-                    <h5>Peso: {{ jugador.weight }} Kg</h5>
-                    <h5>Origen: {{ jugador.location }}</h5>
-                    <h5>Fecha Nacimiento: {{ jugador.date }}</h5>
-                    
+                  <h5>Club: {{ jugador.team }}</h5>
+                  <h5>Nacionalidad: {{ jugador.nation }}</h5>
+                  <h5>Posicion: {{ jugador.position }}</h5>
+                  <h5>N Camiseta: {{ jugador.number }}</h5>
+                  <h5>Altura: {{ jugador.height }}</h5>
+                  <h5>Peso: {{ jugador.weight }} Kg</h5>
+                  <h5>Origen: {{ jugador.location }}</h5>
+                  <h5>Fecha Nacimiento: {{ jugador.date }}</h5>
+
                   <el-button
-                      class="m-2"
-                      type="primary"
-                      size="small"
-                      @click="TeamInfo(jugador.idteam)"
-                      >Informacion del Equipo</el-button
-                    >
+                    class="m-2"
+                    type="primary"
+                    size="small"
+                    @click="TeamInfo(jugador.idteam)"
+                    >Informacion del Equipo</el-button
+                  >
 
                   <el-dialog
                     :title="jugador.team"
                     :visible.sync="ModalTeam"
                     append-to-body
-                    
                   >
                     <div
                       class="fondoEquipo"
@@ -79,14 +77,8 @@
                       <h5>Temporada: {{ equipo.season }}</h5>
                       <h5>Liga: {{ equipo.league }}</h5>
                     </div>
-                    <div class="footerEquipo">
-
-                    </div>
+                    <div class="footerEquipo"></div>
                   </el-dialog>
-                   
-                   
-                    
-                 
                 </el-dialog>
 
                 <el-button
@@ -128,22 +120,30 @@ export default {
 
   methods: {
     favorito() {
-
-       this.$store.dispatch("setFavoritos", this.dataPlayer[0]);
-          this.$notify.success({
-            title: "Favoritos",
-            message: "Jugador añadido a Favoritos",
-            offset: 100,
-          });
-         
-        
-     
+      let FiltrarFav = "";
+      this.dataPlayer.forEach((e) => {
+        FiltrarFav = this.favoritos.filter((f) => f.idplayer == e.idplayer);
+      });
+      console.log(FiltrarFav);
+      if (FiltrarFav[0]) {
+        alert("este jugador ya existe en favoritos");
+      } else {
+        this.$store.dispatch("setFavoritos", this.dataPlayer[0]);
+        this.$notify.success({
+          title: "Favoritos",
+          message: "Jugador añadido a Favoritos",
+          offset: 100,
+        });
+      }
     },
 
     buscar() {
       this.dataPlayer = [];
       let validar = this.nombre.search(" ");
-      if (validar != 0 && validar != -1 && validar != this.nombre.length - 1 || this.nombre == "neymar") {
+      if (
+        (validar != 0 && validar != -1 && validar != this.nombre.length - 1) ||
+        this.nombre == "neymar"
+      ) {
         axios
           .get(
             "https://www.thesportsdb.com/api/v1/json/1/searchplayers.php?p=" +
@@ -163,7 +163,7 @@ export default {
               weight: data.data.player[0].strWeight,
               location: data.data.player[0].strBirthLocation,
               idteam: data.data.player[0].idTeam,
-              
+              idplayer: data.data.player[0].idPlayer,
             });
             //strCutout
             //strPlayer
@@ -215,7 +215,6 @@ export default {
   display: flex;
   flex-direction: column;
   align-items: center;
- 
 }
 .buscador .buscarPlayer {
   font-family: "Noto Sans", sans-serif;
@@ -247,14 +246,13 @@ export default {
 .el-card {
   background-color: #ad8f3b !important;
   margin-top: 30px;
- 
 }
 .el-row {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.el-row button{
+.el-row button {
   text-align: center;
 }
 .el-row .nameplayer {
@@ -266,33 +264,31 @@ export default {
   margin-top: 30px;
   text-align: center;
 }
-.footerEquipo{
+.footerEquipo {
   height: 120px;
 }
-  @media screen and (min-width:300px){
-.buscando{
-  width: 90%;
-  padding: 10px;
-}
-
+@media screen and (min-width: 300px) {
+  .buscando {
+    width: 90%;
+    padding: 10px;
   }
-    @media screen and (min-width:450px){
-.buscando{
-  width: 70%;
-  padding: 10px;
 }
+@media screen and (min-width: 450px) {
+  .buscando {
+    width: 70%;
+    padding: 10px;
   }
-  @media screen and (min-width:750px){
-.buscando{
-  width: 60%;
-  padding: 10px;
 }
+@media screen and (min-width: 750px) {
+  .buscando {
+    width: 60%;
+    padding: 10px;
   }
-      @media screen and (min-width:950px){
- .buscando{
-  width: 50%;
-  padding: 10px;
 }
+@media screen and (min-width: 950px) {
+  .buscando {
+    width: 50%;
+    padding: 10px;
   }
-
+}
 </style>

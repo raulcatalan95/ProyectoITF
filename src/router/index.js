@@ -6,6 +6,8 @@ import Firebase from 'firebase'
 import Inicio from "../views/Inicio.vue"
 import Buscador from "../views/Buscador.vue"
 import Favoritos from "../views/Favoritos.vue"
+import Registro from "../views/Registro.vue"
+
 
 Vue.use(VueRouter);
 
@@ -36,11 +38,21 @@ const routes = [
       },
     ]
   },
-  {
-    path: "/login",
-    name: "login",
-    component:Login,
-   },
+ 
+      {
+        path: "/login",
+        name: "login",
+        component:Login,
+       },
+       {
+        path: "/registro",
+        name: "registro",
+        component:Registro,
+       },
+    
+   
+ 
+
  
  
 ];

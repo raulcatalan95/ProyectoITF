@@ -1,5 +1,6 @@
 <template>
   <div class="login">
+    <router-link :to="{ name: 'registro'}">Registro</router-link>
   
     <h2>Login</h2>
    <div class="formulario ">

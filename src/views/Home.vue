@@ -45,7 +45,7 @@ export default {
       Firebase.auth()
         .signOut()
         .then((accept) => {
-          this.$router.push("/login");
+          this.$router.push({name:"login"});
           console.log(accept);
         });
     },

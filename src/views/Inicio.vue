@@ -77,9 +77,7 @@ export default {
       this.$store.dispatch('setFavoritosInicial', favs)
     })
   },
-   methods: {
-      
-    }
+ 
     
 }
 </script>
