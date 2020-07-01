@@ -82,6 +82,9 @@ console.log(reject.message)
 background-position-y: center;
   color: azure;
 }
+.login h2{
+  color: black;
+}
 @media screen and (min-width:300px){
   .formulario{
       width: 100%;

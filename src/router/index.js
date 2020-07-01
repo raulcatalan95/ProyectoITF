@@ -24,17 +24,19 @@ const routes = [
       {
         path: "inicio",
         name: "inicio",
-       component:Inicio
+       component:Inicio,
+     
       },
       {
         path: "buscador",
         name: "buscador",
        component:Buscador,
+       
       },
       {
         path: "favoritos",
         name: "favoritos",
-       component:Favoritos,
+       component:Favoritos
       },
     ]
   },

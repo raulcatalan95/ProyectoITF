@@ -1,6 +1,6 @@
 <template>
   <div class="registro">
-   
+  
     <h2>registro</h2>
        
     <div class="formulario p-5">

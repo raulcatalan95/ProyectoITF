@@ -74,7 +74,10 @@ export default {
     let correo = Firebase.auth().currentUser.email
     axios.get("https://us-central1-proyectoitf.cloudfunctions.net/jugadores/jugadores/"+correo ).then(data=>{
       let favs = data.data.jugadoresFavoritos
+      favs? 
       this.$store.dispatch('setFavoritosInicial', favs)
+      :
+      this.$store.dispatch('setFavoritosInicial', [])
     })
   },
  
