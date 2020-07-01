@@ -42,5 +42,26 @@ export default {
   font-size: 2rem;
    font-family: 'Noto Sans', sans-serif;
 }
+ @media screen and (min-width:300px){
+
+.el-dialog{
+  width: 100% !important;
+}
+  }
+    @media screen and (min-width:450px){
+.el-dialog{
+  width: 90% !important;
+}
+  }
+  @media screen and (min-width:750px){
+.el-dialog{
+  width: 60% !important;
+}
+  }
+      @media screen and (min-width:950px){
+ .el-dialog{
+  width: 50% !important;
+}
+  }
 
 </style>

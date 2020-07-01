@@ -2,7 +2,7 @@
   <div class="buscador">
     <h2 class=" buscarPlayer mt-3">Busca a tu jugador</h2>
     <div class="buscando">
-      <span>Ingrese nombre y apellido (A exepcion de Neymar)</span>
+      <span>Ingrese nombre y apellido (a excepcion de Neymar)</span>
       <el-input
         placeholder="Nombre y Apellido del jugador"
         v-model="nombre"
@@ -211,7 +211,7 @@ export default {
   background-image: url(../assets/fondo_login.jpg);
   background-repeat: no-repeat;
   background-size: cover;
-  height: 600px;
+  height: 750px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -221,6 +221,7 @@ export default {
   font-family: "Noto Sans", sans-serif;
   font-weight: 700;
   color: white;
+  text-align: center;
 }
 .buscando {
   width: 50%;
@@ -268,5 +269,30 @@ export default {
 .footerEquipo{
   height: 120px;
 }
+  @media screen and (min-width:300px){
+.buscando{
+  width: 90%;
+  padding: 10px;
+}
+
+  }
+    @media screen and (min-width:450px){
+.buscando{
+  width: 70%;
+  padding: 10px;
+}
+  }
+  @media screen and (min-width:750px){
+.buscando{
+  width: 60%;
+  padding: 10px;
+}
+  }
+      @media screen and (min-width:950px){
+ .buscando{
+  width: 50%;
+  padding: 10px;
+}
+  }
 
 </style>

@@ -12,12 +12,13 @@
       <tbody>
         <tr v-for="(jugador, i) in favoritos" :key="i">
           <td>
+           
             <el-col class="carta" :span="6">
               <el-card :body-style="{ padding: '0px' }">
                 <img :src="jugador.img" :alt="jugador.name" class="image" />
                 <div style="padding: 14px;">
                   <h5>{{ jugador.name }}</h5>
-                  <div class="bottom clearfix">
+                  <div class="bottom clearfix" id="botonfav">
                     <el-button
                       class="m-2"
                       @click="ModalVerMas(i)"
@@ -38,6 +39,7 @@
                 </div>
               </el-card>
             </el-col>
+            
           </td>
         </tr>
         
@@ -109,6 +111,7 @@ export default {
 };
 </script>
 <style scooped>
+
 .image {
   width: 100%;
   display: block;
@@ -149,6 +152,55 @@ tbody tr {
 }
 .tituloFav {
   text-align: center;
-  margin: auto;
+  margin-top: 10%;
 }
+
+  @media screen and (min-width:300px){
+.carta{
+  width: 60% !important;
+}
+#botonfav{
+  display: flex;
+  flex-direction: column;
+}
+  }
+
+    @media screen and (min-width:370px){
+.carta{
+  width: 50% !important;
+}
+#botonfav{
+  display: flex;
+  flex-direction: column;
+}
+  }
+     @media screen and (min-width:450px){
+.carta{
+  width: 40% !important;
+}
+#botonfav{
+  display: flex;
+  flex-direction: column;
+}
+  }
+      @media screen and (min-width:1020px){
+.carta{
+  width: 25% !important;
+  
+}
+#botonfav{
+  display: flex;
+  flex-direction: column;
+}
+  }
+       @media screen and (min-width:1200px){
+.carta{
+  width: 25% !important;
+  
+}
+#botonfav{
+  display: inline-block;
+  
+}
+  }
 </style>

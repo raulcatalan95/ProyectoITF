@@ -2,7 +2,7 @@
   <div class="login">
   
     <h2>Login</h2>
-   <div class="formulario p-5">
+   <div class="formulario ">
      <h4>Correo Electronico</h4>
       <b-input-group >
       <b-input-group-prepend is-text>
@@ -84,19 +84,19 @@ background-position-y: center;
 @media screen and (min-width:300px){
   .formulario{
       width: 100%;
- padding: 2px;
+      padding: 5px;
 }
   }
   @media screen and (min-width:600px){
   .formulario{
       width: 70%;
- 
+ padding: 20px;
 }
   }
     @media screen and (min-width:900px){
   .formulario{
       width: 50%;
- 
+ padding: 40px;
 }
   }
 

@@ -38,6 +38,7 @@
 
 <script>
 import axios from "axios";
+import Firebase from "firebase"
 export default {
     data() {
         return {
@@ -68,6 +69,13 @@ export default {
           });
         });
     });
+  },
+  mounted() {
+    let correo = Firebase.auth().currentUser.email
+    axios.get("https://us-central1-proyectoitf.cloudfunctions.net/jugadores/jugadores/"+correo ).then(data=>{
+      let favs = data.data.jugadoresFavoritos
+      this.$store.dispatch('setFavoritosInicial', favs)
+    })
   },
    methods: {
       
@@ -162,4 +170,45 @@ align-items: center;
    align-items: center;
    justify-content: center;
  }
+ @media screen and (min-width:320px){
+ .el-carousel__item{
+   height: 300px;
+}
+.carrusel{
+  height: 250px;
+}
+  }
+   @media screen and (min-width:450px){
+ .el-carousel__item{
+   height: 350px;
+}
+.carrusel{
+  height: 350px;
+}
+  }
+    @media screen and (min-width:760px){
+ .el-carousel__item{
+   height: 460px;
+}
+.carrusel{
+  height: 460px;
+}
+  }
+      @media screen and (min-width:950px){
+ .el-carousel__item{
+   height: 560px;
+}
+.carrusel{
+  height: 560px;
+}
+  }
+
+       @media screen and (min-width:1150px){
+ .el-carousel__item{
+   height: 500px;
+}
+.carrusel{
+  height: 500px;
+}
+  }
 </style>
